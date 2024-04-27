@@ -1,0 +1,10 @@
+schema: './src/gql/**/typeDefs.ts'
+generates:
+  ./src/gql/generated/resolverTypes.ts:
+    plugins:
+      - typescript
+      - typescript-resolvers
+    config:
+      maybeValue: T | undefined
+      useIndexSignature: true
+      skipTypename: true

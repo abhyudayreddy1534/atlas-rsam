@@ -1,0 +1,5 @@
+  gql:
+    port: 1234
+    cacheControl:
+      defaultMaxAge: 0
+      calculateHttpHeaders: true

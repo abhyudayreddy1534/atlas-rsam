@@ -1,0 +1,7 @@
+gqlApp:
+  mongo:
+    dbName: "DB_NAME"
+    url: "DB_URL"
+
+    
+

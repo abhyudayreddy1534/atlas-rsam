@@ -1,0 +1,92 @@
+{
+  "name": "atlas-rsm",
+  "version": "1.12.1",
+  "description": "atlas",
+  "type": "module",
+  "exports": {
+    ".": "./index.js"
+  },
+  "typesVersions": {
+    "*": {
+      "index.d.ts": [
+        "./index.d.ts"
+      ]
+    }
+  },
+  "author": "Sravanthi",
+  "license": "ISC",
+  "main": "./dist/index.js",
+  "engines": {
+    "node": ">=18.16.0"
+  },
+  "scripts": {
+    "cp": "cp ./LICENSE ./dist && cp ./README.md ./dist && cp ./package.json ./dist && cp -rf ./node_modules ./dist && cp -f ./run.sh ./dist",
+    "debug": "env-cmd node --inspect ./dist/index.js",
+    "log": "env-cmd node --inspect ./dist/index.js | tee ./logs/test.log",
+    "dist": "pwd && ls -al && tsc && npm run cp",
+    "generate": "graphql-codegen",
+    "start": "env-cmd node ./dist/index.js",
+    "build": "tsc -p ./tsconfig.json",
+    "build-prod": "tsc -p ./tsconfig.prod.json",
+    "docker-build-run": "docker run --rm -p 1234:1234 -it $(docker build -q . --secret id=artcreds,env=ARTIFACTORY_CREDS)",
+    "lint": "eslint ./src --ext .ts",
+    "lint-fix": "eslint ./src --ext .ts --fix",
+    "local-schema-file": "ts-node-esm ./tools/local-schema-file.ts",
+    "prettier-format": "prettier --config .prettierrc 'src/**/*.ts' --write",
+    "test": "jest --passWithNoTests"
+  },
+  "dependencies": {
+    "@apollo/server": "^4.10.2",
+    "@apollo/subgraph": "^2.0.3",
+    "apollo-server-core": "^3.10.0",
+    "apollo-server-koa": "^3.10.0",
+    "config": "^3.3.7",
+    "graphql": "^16.5.0",
+    "js-yaml": "^4.1.0",
+    "koa": "^2.15.3",
+    "koa-bodyparser": "^4.3.0",
+    "lodash": "^4.17.21",
+    "log4js": "^6.6.0",
+    "mongodb": "^5.6.0",
+    "rxjs": "^7.5.6",
+    "soap": "^0.45.0",
+    "socket.io-client": "^4.7.2",
+    "ws": "^8.13.0",
+    "xml2js": "^0.6.2"
+  },
+  "devDependencies": {
+    "@graphql-codegen/cli": "^2.11.6",
+    "@graphql-codegen/typescript": "^2.7.3",
+    "@graphql-codegen/typescript-resolvers": "^2.7.3",
+    "@semantic-release/changelog": "^6.0.1",
+    "@semantic-release/commit-analyzer": "^9.0.2",
+    "@semantic-release/exec": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^8.0.2",
+    "@semantic-release/npm": "^9.0.1",
+    "@semantic-release/release-notes-generator": "^10.0.3",
+    "@tsconfig/node16": "^1.0.3",
+    "@types/config": "^0.0.41",
+    "@types/jest": "^27.5.1",
+    "@types/koa": "^2.15.0",
+    "@types/koa-bodyparser": "^4.3.7",
+    "@types/mssql": "^8.1.2",
+    "@types/node": "^16.11.1",
+    "@types/tedious": "^4.0.9",
+    "@types/tedious-connection-pool": "^1.0.3",
+    "@typescript-eslint/eslint-plugin": "^5.33.1",
+    "@typescript-eslint/parser": "^5.33.1",
+    "env-cmd": "^10.1.0",
+    "eslint": "^8.22.0",
+    "eslint-config-prettier": "^8.5.0",
+    "jest": "^28.1.0",
+    "mssql": "^9.1.1",
+    "prettier": "^2.7.1",
+    "semantic-release": "^19.0.3",
+    "ts-jest": "^28.0.3",
+    "ts-node": "^10.3.0",
+    "ts-node-dev": "^1.1.8",
+    "typescript": "^4.4.4",
+    "wsdl-tsclient": "^1.4.0"
+  }
+}
